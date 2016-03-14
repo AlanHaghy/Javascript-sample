@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+</head>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    #fruit {
+        margin-top: 200px;
+        width: 350px;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #3E3E3E;
+        -webkit-box-sizing: border-box;
+        height: 100%;
+        overflow: hidden;
+        padding: 5px 9px 0;
+    }
+
+    .DivClass {
+        font-family: Arial;
+        width: 350px;
+        margin: auto;
+        text-align: left;
+        background-color: #fff;
+        border: 1px #C8C8C8 solid;
+    }
+
+    .fruitContentClass {
+        display: block;
+        color: #323232;
+        padding: 3px;
+    }
+
+        .fruitContentClass:hover {
+            display: block;
+            background: #AFE0FF;
+            cursor: pointer;
+        }
+</style>
+
+<body>
+
+<script language="javascript">
+
+    // Input Textbox filter using no libraries,
+    // Characters to guess the word, min=1: max=3; default = 3;
+    var charSence = 1;
+    
+    // Data source: can be a JSON Object
+        var fruitName = ["Raspberry",
+        "Cranberry",
+        "Clementine",
+        "Mango",
+        "Papaya",
+        "Peach",
+        "Tangerine",
+        "Pear",
+        "Plum",
+        "Grapes",
+        "Boysenberry",
+        "Lychee",
+        "Pomegranate",
+        "Watermelon",
+        "Honey Dew Melon",
+        "Fig",
+        "Cherry",
+        "Grapefruit"];
+
+        function fruitFunction() {
+            
+            document.getElementById("DivID").innerHTML = "";
+            fruitValue = document.getElementById("fruit").value;
+            fruitValue = (fruitValue.length >= charSence) ? fruitValue : "";
+
+                fruitName.forEach(function fruitArrayElements(value) {
+
+                    if ((fruitValue) && value.substr(0, fruitValue.length).toLowerCase() == fruitValue.toLowerCase()) {
+                        var divTag = document.createElement("div");
+                        divTag.className = "fruitContentClass";
+                        document.getElementById("DivID").appendChild(divTag);
+                        var subValue = value.substr(0, fruitValue.length);
+                        divTag.innerHTML = '<b>' + subValue + '</b>' + value.substr(fruitValue.length, (value.length - fruitValue.length));
+                    }
+                });
+            
+        }
+      
+</script>
+   
+<input type="text" id="fruit" onkeyup="fruitFunction()" width="150px" />
+<div id="DivID" class="DivClass"></div>
+
+</body>
+</html>
